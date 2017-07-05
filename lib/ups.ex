@@ -24,7 +24,7 @@ defmodule UPS do
         country: "US"
       }
 
-      #=> UPS.validate_address("/XAV", address)
+      #=> UPS.validate_address(address)
   """
   @spec validate_address(map) ::
     {:ok, map} |
