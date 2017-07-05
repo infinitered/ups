@@ -18,7 +18,7 @@ Otherwise, add this to your list of dependencies in `mix.exs`
 
 ```elixir
 def deps do
-  [{:ups, github: "infinitered/ups", tag: "0.1.0"}]
+  [{:ups, github: "infinitered/ups", tag: "v0.1.0"}]
 end
 ```
 
