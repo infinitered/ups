@@ -1,6 +1,6 @@
-# Ups
+# UPS
 
-**TODO: Add description**
+Basic Elixir HTTPoison wrapper around the UPS street level validation API.
 
 ## Installation
 
