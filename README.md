@@ -1,6 +1,7 @@
 # UPS
 
-Basic Elixir HTTPoison wrapper around the UPS street level validation API.
+Basic Elixir HTTPoison wrapper around the UPS street level validation API. This
+wrapper could easily be extended to include more of UPS's offered APIs listed (here)[https://www.ups.com/upsdeveloperkit?loc=en_US]
 
 ## Installation
 
@@ -10,6 +11,14 @@ by adding `ups` to your list of dependencies in `mix.exs`:
 ```elixir
 def deps do
   [{:ups, "~> 0.1.0"}]
+end
+```
+
+Otherwise, add this to your list of dependencies in `mix.exs`
+
+```elixir
+def deps do
+  [{:ups, github: "infinitered/ups", tag: "0.1.0"}]
 end
 ```
 
