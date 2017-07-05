@@ -26,6 +26,17 @@ Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_do
 and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
 be found at [https://hexdocs.pm/ups](https://hexdocs.pm/ups).
 
+## Configuration
+
+Add the following to your `config.exs` file:
+
+```elixir
+config :ups,
+  access_key: {:system, "UPS_ACCESS_KEY"},
+  username: {:system, "UPS_USERNAME"},
+  password: {:system, "UPS_PASSWORD"}
+```
+
 ## Usage
 
 #### Address Validation
