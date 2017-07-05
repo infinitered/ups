@@ -1,3 +1,5 @@
+[![Build Status](https://semaphoreci.com/api/v1/ir/ups/branches/master/shields_badge.svg)](https://semaphoreci.com/ir/ups)
+
 # UPS
 
 Basic Elixir HTTPoison wrapper around the UPS street level validation API. This
