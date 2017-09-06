@@ -55,6 +55,22 @@ defmodule UPSTest do
       assert response.message == "Address is valid."
     end
 
+    test "handles bad addresses with suggestions and without exceptions" do
+      address = %{
+        city: "shasts", 
+        country: "US", 
+        line1: "123 main street", 
+        line2: nil,
+        state: "AK", 
+        zip: "01576"
+      }
+
+      {:ok, %{body: response}} = UPS.validate_address(address)
+      refute response.success
+      assert response.suggestions
+      assert response.message == "Address is not complete."
+    end
+
     test "returns suggestions when address is not complete" do
       address = %{
         line1: "11815 NE 1",

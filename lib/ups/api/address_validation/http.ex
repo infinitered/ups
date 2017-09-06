@@ -87,6 +87,9 @@ defmodule UPS.API.AddressValidation.HTTP do
     }
   end
 
+  defp format_address({"AddressKeyFormat", address}) do
+    format_address(%{"AddressKeyFormat" => address})
+  end
   defp format_address(%{"AddressKeyFormat" => address}) do
     base = %{
       city: address["PoliticalDivision2"],
