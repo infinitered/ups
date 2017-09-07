@@ -10,11 +10,12 @@ defmodule UPS.API.AddressValidation.HTTP do
   # -------------------
 
   def process_url(path) do
-    if Mix.env == :prod do
-      "https://wwwcie.ups.com/rest" <> path
-    else
-      "https://onlinetools.ups.com/rest" <> path
-    end
+    # if Mix.env == :prod do
+    #   "https://onlinetools.ups.com/rest" <> path
+    # else
+    #   "https://wwwcie.ups.com/rest" <> path
+    # end
+    "https://onlinetools.ups.com/rest" <> path
   end
 
   def process_response_body(body) do
