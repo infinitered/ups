@@ -3,6 +3,7 @@ defmodule UPS.Mixfile do
 
   def project do
     [app: :ups,
+     description: "Basic Elixir HTTPoison wrapper around the UPS street level validation API.",
      version: "0.1.0",
      elixir: "~> 1.4",
      build_embedded: Mix.env == :prod,
