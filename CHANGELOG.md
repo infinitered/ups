@@ -1,7 +1,6 @@
 # Change Log
 
-## [Unreleased](https://github.com/infinitered/ups/tree/HEAD)
-
+## [v0.1.0](https://github.com/infinitered/ups/tree/v0.1.0) (2017-09-07)
 **Merged pull requests:**
 
 - Handle invalid addresses better [\#3](https://github.com/infinitered/ups/pull/3) ([danielberkompas](https://github.com/danielberkompas))
