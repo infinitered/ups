@@ -7,6 +7,8 @@ defmodule UPS.Mixfile do
      elixir: "~> 1.4",
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
+     package: package(),
+     docs: docs(),
      deps: deps()]
   end
 
@@ -17,6 +19,25 @@ defmodule UPS.Mixfile do
 
   defp deps do
     [{:httpoison, "~> 0.11.2"},
-     {:poison, "~> 3.0"}]
+     {:poison, "~> 3.0"},
+     {:ex_doc, ">= 0.0.0", only: :dev}]
+  end
+
+  defp package do
+    [
+      files: ["lib", "mix.exs", "README.md", "CHANGELOG.md", "LICENSE"],
+      maintainers: ["Zachary Berkompas"],
+      licenses: ["MIT"],
+      links: %{
+        "Github" => "https://github.com/infinitered/ups"
+      }
+    ]
+  end
+
+  defp docs do
+    [
+      readme: "README.md",
+      main: UPS
+    ]
   end
 end
