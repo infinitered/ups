@@ -1,8 +1,7 @@
 # Change Log
 
-## [Unreleased](https://github.com/infinitered/ups/tree/HEAD)
-
-[Full Changelog](https://github.com/infinitered/ups/compare/v0.1.0...HEAD)
+## [v0.2.0](https://github.com/infinitered/ups/tree/v0.2.0) (2017-09-08)
+[Full Changelog](https://github.com/infinitered/ups/compare/v0.1.0...v0.2.0)
 
 **Merged pull requests:**
 
