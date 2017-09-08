@@ -1,5 +1,13 @@
 # Change Log
 
+## [Unreleased](https://github.com/infinitered/ups/tree/HEAD)
+
+[Full Changelog](https://github.com/infinitered/ups/compare/v0.1.0...HEAD)
+
+**Merged pull requests:**
+
+- Return :error tuples instead of {:ok, %{success false}} [\#4](https://github.com/infinitered/ups/pull/4) ([danielberkompas](https://github.com/danielberkompas))
+
 ## [v0.1.0](https://github.com/infinitered/ups/tree/v0.1.0) (2017-09-07)
 **Merged pull requests:**
 
