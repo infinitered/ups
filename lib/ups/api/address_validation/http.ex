@@ -6,6 +6,8 @@ defmodule UPS.API.AddressValidation.HTTP do
 
   alias UPS.Config
 
+  @behaviour UPS.API.AddressValidation
+
   # HTTPoison Callbacks
   # -------------------
 
@@ -19,7 +21,12 @@ defmodule UPS.API.AddressValidation.HTTP do
   end
 
   def process_response_body(body) do
-    format_response(Poison.decode!(body))
+    with {:ok, json} <- Poison.decode(body) do
+      format_response(json)
+    else
+      {:error, error} ->
+        error
+    end
   end
 
   def process_request_body(body) do

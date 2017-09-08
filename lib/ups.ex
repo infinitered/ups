@@ -9,7 +9,6 @@ defmodule UPS do
       password: {:system, System.get_env("NAME_OF_ENV_VARIABLE")}
   """
 
-
   @doc """
   Validates address & returns a normalized version.
 
@@ -28,9 +27,27 @@ defmodule UPS do
   """
   @spec validate_address(map) ::
     {:ok, map} |
-    {:error, map} |
-    {:error, HTTpoison.Error.t}
+    {:error, UPS.ValidationError.t} |
+    {:error, HTTPoison.Error.t}
   def validate_address(address) do
-    UPS.API.AddressValidation.HTTP.post("/XAV", address)
+    case address_validation_module().post("/XAV", address) do
+      {:ok, %HTTPoison.Response{body: %{success: true}}} = resp ->
+        resp
+      {:ok, %HTTPoison.Response{body: %{success: false} = body}}->
+        error = 
+          %UPS.ValidationError{
+            message: body.message,
+            raw_body: body.raw_body,
+            suggestions: body[:suggestions] || []
+          }
+
+        {:error, error}
+      other ->
+        other
+    end
+  end
+
+  defp address_validation_module do
+    Application.get_env(:ups, :address_validation_module, UPS.API.AddressValidation.HTTP)
   end
 end

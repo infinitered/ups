@@ -1,6 +1,5 @@
 defmodule UPSTest do
   use ExUnit.Case
-  # doctest Ups
 
   describe ".validate_address" do
     test "validate address returns successful response when valid address is passed" do
@@ -65,10 +64,9 @@ defmodule UPSTest do
         zip: "01576"
       }
 
-      {:ok, %{body: response}} = UPS.validate_address(address)
-      refute response.success
-      assert response.suggestions
-      assert response.message == "Address is not complete."
+      {:error, %UPS.ValidationError{} = error} = UPS.validate_address(address)
+      assert length(error.suggestions) > 0
+      assert error.message == "Address is not complete."
     end
 
     test "returns suggestions when address is not complete" do
@@ -81,11 +79,10 @@ defmodule UPSTest do
         country: "US"
       }
 
-      {:ok, %{body: response}} = UPS.validate_address(address)
+      {:error, %UPS.ValidationError{} = error} = UPS.validate_address(address)
 
-      refute response.success
-      assert response.suggestions
-      assert response.message == "Address is not complete."
+      assert length(error.suggestions) > 0
+      assert error.message == "Address is not complete."
     end
 
     test "returns raw errors when address is not passed correctly" do
@@ -98,11 +95,10 @@ defmodule UPSTest do
         country: ""
       }
 
-      {:ok, %{body: response}} = UPS.validate_address(address)
+      {:error, %UPS.ValidationError{} = error} = UPS.validate_address(address)
 
-      refute response.success
-      assert response.raw_body["Fault"]
-      assert response.message == "Address is not valid."
+      assert error.raw_body["Fault"]
+      assert error.message == "Address is not valid."
     end
   end
 end
