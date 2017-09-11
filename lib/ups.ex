@@ -29,8 +29,8 @@ defmodule UPS do
     {:ok, map} |
     {:error, UPS.ValidationError.t} |
     {:error, HTTPoison.Error.t}
-  def validate_address(address) do
-    case address_validation_module().post("/XAV", address) do
+  def validate_address(address, opts \\ []) do
+    case address_validation_module().post("/XAV", address, opts) do
       {:ok, %HTTPoison.Response{body: %{success: true}}} = resp ->
         resp
       {:ok, %HTTPoison.Response{body: %{success: false} = body}}->
